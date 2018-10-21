@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byType">
+
+    <bean id="zkClient" class="org.I0Itec.zkclient.ZkClient">
+        <constructor-arg value="11.162.135.79:2181" />
+    </bean>
+
+    <bean id="distributedLock" class="com.namedlock.DistributedLockImpl" >
+        <constructor-arg ref="zkClient"/>
+        <constructor-arg value="/__test/__d_lock" />
+    </bean>
+</beans>
